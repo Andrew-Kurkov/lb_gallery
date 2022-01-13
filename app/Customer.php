@@ -2,22 +2,16 @@
 
 namespace App;
 
-use Auth;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Model;
 
-
-class Customer extends Authenticatable
+class user extends Model
 {
-    use Notifiable;
+    public $timestamps = FALSE;
 
-    protected $table = 'customers';
-    protected $fillable = ['email', 'password'];
-    protected $casts = ['email_verified_at' => 'datetime'];
-
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = Hash::make($password);
-    }
+    protected $table = 'users';
+    protected $fillable = [
+        'us_id',
+        'us_mail',
+        'us_pass'
+    ];
 }
